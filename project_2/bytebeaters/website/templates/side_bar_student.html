@@ -1,0 +1,17 @@
+<div class="side-nav">
+    <a href="#" class="logo">
+      <img src="{{ url_for('static', filename='ucnhvid.png') }}" width="100" height="50">
+    </a>
+    <!-- her henter vi klassen "side-nav" fra filen style.css og importer ucn logo billedet -->
+    <ul class="nav-links">
+      <li><a href="{{ url_for('student_index') }}"><p><i class="fas fa-home"></i>Startside</p></a></li>
+      <li><a href="{{ url_for('personal_overview') }}"><p><i class="fas fa-home"></i>Se dit fremmøde</p></a></l>
+      <li>
+          <a class="logout-btn" href="{{ url_for('logout') }}"><i class="fas fa-lock"></i>Log ud</a>
+        </form>
+        <!-- Her sætter vi virkelig funktions knapper den studerende skal have i sin side bar
+        med ikoner og url for hvilken side knappen til tilgå -->
+      </li>
+    </ul>
+  </div>
+  

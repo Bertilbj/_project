@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tjek / opdater fremmøde</title>
+    <style>
+      body {
+        background-color: #1893BB;
+      }
+
+      table,
+      th,
+      td {
+        border: 2px solid black;
+        border-collapse: collapse;
+        background-color: #FFFFFF;
+        color: black;
+      }
+
+      th {
+        padding: 10px;
+        text-align: center;
+        background-color: #BB7E18;
+        color: black;
+      }
+
+      td {
+        padding: 10px;
+        text-align: center;
+      }
+      a,h1,label {
+        font-family: Rockwell;
+        label-align: center;
+      }
+      input {
+        display: block;
+        text-align: center;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1> Oversigt over studerende</h1>
+    <table>
+      <tr>
+        <th>Elev ID</th>
+        <th>Fornavn</th>
+        <th>Efternavn</th>
+        <th>Hold</th>
+        <th>Kort ID</th>
+      </tr>
+      {% for row in output %}
+      <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+        <td>{{ row[3] }}</td>
+        <td>{{ row[4] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <form action="{{ url_for('admin_overview', education=education) }}" method="post">
+      <input type="hidden" name="education" value="{{ education }}">
+      <label for="Student_ID">Manuel opdatering af fremmøde</label>
+      <input type="number" name="Student_ID"><br>
+      <input type="submit" value="Opdater fremmøde"><br>
+    </form>
+    <form action="{{ url_for('admin_overview') }}" method="post">
+      <input type="number" name="Student_ID"><br>
+      <input type="submit" value="Fjern studerende"><br>
+    </form>
+    
+    <a href="{{ url_for('admin_page') }}">Tilbage til startside</a>
+  </body>
+  </html>
+    

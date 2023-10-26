@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin rediger</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  }
+.header{
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+}
+.side-nav{
+  width: 220px;
+  height: 100%;
+  background: #32373c;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px 30px;
+}
+.logo{
+  display: block;
+  margin-bottom: 100px;
+}
+.nav-links{
+  list-style: none;
+  position: absolute;
+}
+.nav-links li{
+  padding: 10px 0;
+}
+.nav-links li a{
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+}
+.nav-links li a i{
+  font-size: 15px;
+  margin-right: 8px;
+}
+
+.nav-links li:hover a{
+  color: #000000;
+  transition: 0.3s;
+}
+.nav-links li:hover ~ .active{
+  display: block;
+}
+    
+.container {
+  width: 1000px;
+  padding: 180px;
+  background-color: #ffffff;
+  margin: 0 auto;
+  margin-top: 4%;
+  margin-left: 23.5%;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+  animation: fade-in 0.6s ease-out;
+}
+      
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+      
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+      
+input[type=text]:focus, input[type=password]:focus {
+  border-color: #4CAF50;
+}
+      
+.login-btn {
+  background-color: #6e1a1a;
+  color: white;
+  padding: 8px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+      
+.login-btn:hover {
+  background-color: #922a2a;
+}
+      
+.error-msg {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+  animation: shake 0.4s ease-in-out;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(-10px);
+  }
+  25% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="container">
+      <h1>Her kan du redigere fremmøde</h1>
+      <p>Hvordan det lige skal gøres må vi lige snakke om.</p>
+    <div class="side-nav">
+      <a href="#" class="logo">
+        <img src="ucnhvid.png" width="100" height="50">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#"><p><i class="fas fa-home"></i>Startside</p></a></li>
+        <li><a href="#"><p><i class="fas fa-eye"></i>Oversigt</p></a></li>
+        <li><a href="#"><p><i class="fas fa-user-plus"></i>Tilføj ny studerende</p></a></li>
+        <li><a href="#"><p><i class="fas fa-pen"></i>Rediger fremmøde</p></a></li>
+        <li><a href="#"><p><i class="fas fa-user-minus"></i>Slet en studerende</p></a></li>
+        <li><a href="#"><p><form action="{{ url_for('attendance_update') }}" method="get">
+          <div><button class="login-btn" onclick="login()"><i class="fas fa-lock"></i>Log ud</button>
+        </form></p></a></li></div>
+      </ul>
+    </div>
+    </div>
+
+
+  </div>
+
+</body>
+</html>

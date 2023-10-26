@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tjek / opdater fremmøde</title>
+    <style>
+      body {
+        background-color: #1893BB;
+      }
+
+      table,
+      th,
+      td {
+        border: 2px solid black;
+        border-collapse: collapse;
+        background-color: #FFFFFF;
+        color: black;
+      }
+
+      th {
+        padding: 10px;
+        text-align: center;
+        background-color: #BB7E18;
+        color: black;
+      }
+
+      td {
+        padding: 10px;
+        text-align: center;
+      }
+      a,h1,label {
+        font-family: Rockwell;
+        label-align: center;
+      }
+      input {
+        display: block;
+        text-align: center;
+        width: 200px;
+      }
+    </style>
+</head>
+<body>
+  <h1> Fremmøde oversigt</h1>
+  <table>
+    <tr>
+      <th>Fremmøde ID</th>
+      <th>Elev ID</th>
+      <th>Terminal ID</th>
+      <th>Dato</th>
+      <th>Time</th>
+    </tr>
+    {% for row in output %}
+    <tr>
+      <td>{{ row[0] }}</td>
+      <td>{{ row[1] }}</td>
+      <td>{{ row[2] }}</td>
+      <td>{{ row[3] }}</td>
+      <td>{{ row[4] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+    <title>Attendance Update</title>
+</head>
+<body>
+<form action="{{ url_for('attendance_update') }}" method="post">
+    <label for="Student_ID">Elev ID:</label>
+    <input type="number" name="Student_ID" required><br>
+    <label for="term_value">Terminal name:</label>
+    <select name="term_value">
+        <option value="{{ value[0] }}" selected>{{ value[0] }}</option>
+        {% for terminal in value[1:] %}
+        <option value="{{ terminal }}">{{ terminal }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Submit">
+</form>
+
+<a href="{{ url_for('admin_index') }}">Tilbage til startside</a>
+</body>
+</html>
+
+
+
+
+
+
+

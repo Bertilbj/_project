@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+      }
+      
+      .container {
+        width: 300px;
+        padding: 20px;
+        background-color: #ffffff;
+        margin: 0 auto;
+        margin-top: 100px;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+        animation: fade-in 0.6s ease-out;
+      }
+      
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease;
+      }
+      
+      input[type=text]:focus, input[type=password]:focus {
+        border-color: #4CAF50;
+      }
+      
+      .login-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+      }
+      
+      .login-btn:hover {
+        background-color: #45a049;
+      }
+      
+      .error-msg {
+        color: red;
+        margin-top: 10px;
+        text-align: center;
+        animation: shake 0.4s ease-in-out;
+      }
+      
+      @keyframes shake {
+        0% {
+          transform: translateX(-10px);
+        }
+        25% {
+          transform: translateX(10px);
+        }
+        50% {
+          transform: translateX(-10px);
+        }
+        75% {
+          transform: translateX(10px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <h1>{{full_name}}</h1>
+    <p>Vælg en nedenstående valgmulighed</p>
+    <div>
+      <form action="{{ url_for('admin_overview') }}" method="get">
+        <button class="login-btn" onclick="login()"><i class="fas fa-eye"></i>&nbsp&nbsp&nbspStuderende oversigt</button>
+      </form>
+      <form action="{{ url_for('add_student_db') }}" method="get">
+        <button class="login-btn" onclick="login()"><i class="fas fa-plus"></i>&nbsp&nbsp&nbspTilføj ny studerende</button>
+      </form>
+      <form action="{{ url_for('attendance_update') }}" method="get">
+        <button class="login-btn" onclick="login()"><i class="fas fa-pen"></i>&nbsp&nbsp&nbspRedigering af fremmøde</button>
+      </form>
+      <form action="{{ url_for('attendance_update') }}" method="get">
+        <button class="login-btn" onclick="login()"><i class="fas fa-minus"></i>&nbsp&nbsp&nbspSlet en studerende</button>
+    </form>
+    </div>
+    </div>
+  </body>
+</html>

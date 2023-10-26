@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tilføj ny studernede</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+  {% include "side_bar.html" %}
+  <div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash-messages">
+      {% for category, message in messages %}
+      <div class="flash-message {{ category }}">
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <h1>Opret en ny studerende</h1>
+    <form action="{{ url_for('add_student') }}" method="post">
+      <label for="teams">Hold:</label>
+      <select name="teams" required>
+        {% for team in teams %}
+        <option value="{{ team }}">{{ team }}</option>
+        {% endfor %}
+      </select><br>
+      <label for="cards">Ledige kort:</label>
+      <select name="cards" required>
+        {% for card in cards %}
+        <option value="{{ card }}">{{ card }}</option>
+        {% endfor %}
+      </select><br>
+      <br>
+      <label for="first_name"><b>Fornavn:</b></label>
+      <input type="text" placeholder="Indtast fornavn" name="first_name" required><br>
+      <label for="last_name"><b>Efternavn:</b></label>
+      <input type="text" placeholder="Indtast efternavn" name="last_name" required><br>
+      <br>
+      <button type="submit" value="Submit" class="login-btn" onclick="login()"><i
+          class="fas fa-user-plus"></i>&nbsp&nbspTilføj</button><br>
+    </form>
+  </div>
+</body>
+
+</html>

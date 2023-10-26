@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Teams</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+
+  <body>
+    {% include "side_bar.html" %}
+    <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+        <div class="flash-message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %}
+      <br />
+      <br />
+      <h1>Tilføj hold</h1>
+      <form action="{{ url_for('manage_team') }}" method="post">
+        <input type="text" name="new_team" placeholder="Hold navn" />
+        <button
+          type="submit"
+          name="Add_Team"
+          value="Tilføj hold"
+          class="login-btn"
+          onclick="login()"
+        >
+          <i class="fas fa-user-plus"></i>&nbsp&nbspTilføj hold</button
+        ><br />
+      </form>
+      <br />
+      <br />
+      <h1>Ændre hold navn</h1>
+      <form action="{{ url_for('manage_team') }}" method="post">
+        <select name="team_id">
+          {% for team in teams %}
+          <option value="{{ team }}">{{ team }}</option>
+          {% endfor %}
+        </select>
+        <input type="text" name="edit_team" placeholder="Nyt hold navn" />
+        <button
+          type="submit"
+          name="Change_Team_Name"
+          value="Ændre hold navn"
+          class="login-btn"
+          onclick="login()"
+        >
+          <i class="fas fa-user-plus"></i>&nbsp&nbspÆndre hold navn</button
+        ><br />
+      </form>
+      <br />
+      <br />
+      <h1>Slet hold</h1>
+      <form action="{{ url_for('manage_team') }}" method="post">
+        <select name="team_delete">
+          {% for team in teams %}
+          <option value="{{ team }}">{{ team }}</option>
+          {% endfor %}
+        </select>
+        <button
+          type="submit"
+          name="Delete_Team"
+          value="Slet Hold"
+          class="login-btn"
+          onclick="login()"
+        >
+          <i class="fas fa-user-plus"></i>&nbsp&nbspSlet hold</button
+        ><br />
+      </form>
+    </div>
+  </body>
+</html>

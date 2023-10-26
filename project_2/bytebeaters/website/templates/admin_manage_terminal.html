@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Terminal</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+
+  <body>
+    {% include "side_bar.html" %}
+    <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+        <div class="flash-message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %}
+
+      <h1>Tilføj en ny Terminal</h1>
+      <form name="new" action="{{ url_for('manage_terminal') }}" method="post">
+        <br><label for="teams">Hold:</label>
+        <select name="teams" required>
+          {% for team in teams %}
+          <option value="{{ team }}">{{ team }}</option>
+          {% endfor %}</select
+        ><br />
+        <br />
+        <label for="name"><b>Navn:</b></label>
+        <input
+          type="text"
+          placeholder="Indtast navn på terminal"
+          name="new_terminal"
+        /><br />
+        <button
+          type="submit"
+          value="Submit"
+          name="Add_Terminal"
+          class="login-btn"
+          onclick="login()"
+        >
+          <i class="fas fa-user-plus"></i>&nbsp&nbspTilføj Terminal</button
+        >
+        <br />
+        <br />
+        <br />
+            <h1>Tilføj hold til terminal</h1>
+    <form name="add" action="{{ url_for('manage_terminal') }}" method="post">
+      <label for="terminals">Terminal:</label>
+      <select name="terminals" required>
+        {% for terminal in terminals %}
+        <option value="{{ terminal }}">{{ terminal }}</option>
+        {% endfor %}
+      </select>
+      <label for="edit_teams">Hold:</label>
+      <select name="edit_teams" required>
+        {% for team in teams %}
+        <option value="{{ team }}">{{ team }}</option>
+        {% endfor %}
+      </select><br />
+      <button type="submit" name="Edit_Terminal" value="Add_Team" class="login-btn" onclick="login()">
+        <i class="fas fa-user-plus"></i>&nbsp&nbspTilføj Team</button><br />
+        <br/>
+      </form>
+            <h1>Ændre terminal navn</h1>
+      <form action="{{ url_for('manage_terminal') }}" method="post">
+        <select name="terminal_edit">
+          {% for terminal in terminals %}
+          <option value="{{ terminal }}">{{ terminal }}</option>
+          {% endfor %}
+        </select>
+        <input type="text" name="new_terminal_name" placeholder="Nyt terminal navn" />
+        <button
+          type="submit"
+          name="Change_Terminal_Name"
+          value="Ændre terminal navn"
+          class="login-btn"
+          onclick="login()"
+        >
+          <i class="fas fa-user-plus"></i>&nbsp&nbspÆndre hold navn</button
+        ><br />
+      </form>
+       <br/>
+          <h1>Alle Terminaler på Hold</h1>
+          <table class="content-table">
+            <thead>
+              <tr>
+                <th>Terminal</th>
+                <th>Team</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in overview %}
+              <tr class="active-row">
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <br />
+          <br />
+          <br />
+          <h1>Slet en Terminal</h1>
+          <form name="delete" action="{{ url_for('manage_terminal') }}" method="post">
+            <label for="terminals">Terminal:</label>
+            <select name="terminals" required>
+              {% for terminal in terminals %}
+              <option value="{{ terminal }}">{{ terminal }}</option>
+              {% endfor %}
+            </select><br />
+            <button type="submit" name="Delete_Terminal" value="Delete_Terminal" class="login-btn" onclick="login()">
+              <i class="fas fa-user-plus"></i>&nbsp&nbspSlet Terminal</button><br />
+      </div>
+  </body>
+</html>

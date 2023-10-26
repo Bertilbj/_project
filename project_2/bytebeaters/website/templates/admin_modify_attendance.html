@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rediger fremmøde</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+  {% include "side_bar.html" %}
+  <div class="header">
+    <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+        <div class="flash-message {{ category }}">
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endwith %}
+      <h1>Fremmøde registrering</h1>
+      <div class="column-table">
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th>Attendance_ID</th>
+              <th>Student_ID</th>
+              <th>Fornavn</th>
+              <th>Efternavn</th>
+              <th>Hold</th>
+              <th>Card_ID</th>
+              <th>Date</th>
+              <th>Tidspunkt</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in output %}
+            <tr class="active-row">
+              <td>{{ row[0] }}</td>
+              <td>{{ row[1] }}</td>
+              <td>{{ row[2] }}</td>
+              <td>{{ row[3] }}</td>
+              <td>{{ row[4] }}</td>
+              <td>{{ row[5] }}</td>
+              <td>{{ row[6] }}</td>
+              <td>{{ row[7] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <form action="{{ url_for('attendance_update') }}" method="post">
+        <label for="Student_ID">Indtast elev ID:</label>
+        <input type="number" name="Student_ID" /><br />
+        <input type="submit" value="Registrer fremmøde" class="login-btn" /><br />
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

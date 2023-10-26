@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tilføj ny studernede</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+      }
+      
+      .container {
+        width: 300px;
+        padding: 20px;
+        background-color: #ffffff;
+        margin: 0 auto;
+        margin-top: 100px;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+        animation: fade-in 0.6s ease-out;
+      }
+      
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease;
+      }
+      
+      input[type=text]:focus, input[type=password]:focus {
+        border-color: #4CAF50;
+      }
+      
+      .login-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+      }
+      
+      .login-btn:hover {
+        background-color: #45a049;
+      }
+      
+      .error-msg {
+        color: red;
+        margin-top: 10px;
+        text-align: center;
+        animation: shake 0.4s ease-in-out;
+      }
+
+      .btn {
+      background-color: DodgerBlue;
+      border: none; 
+      color: white; 
+      padding: 12px 16px; 
+      font-size: 16px; 
+      cursor: pointer;
+      border-radius: 25px;
+      width: 100%;
+      }
+
+      .btn:hover {
+      background-color: RoyalBlue;
+      }
+      @keyframes shake {
+        0% {
+          transform: translateX(-10px);
+        }
+        25% {
+          transform: translateX(10px);
+        }
+        50% {
+          transform: translateX(-10px);
+        }
+        75% {
+          transform: translateX(10px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Opret en ny studerende</h1>
+      <form action="{{ url_for('add_student_db') }}" method="post">
+        <label for="team">Uddannelse:</label>
+        <select name="team" required>
+          {% for team in teams %}
+          <option value="{{ team }}">{{ team }}</option>
+          {% endfor %}
+        </select><br>
+        <br>
+        <label for="first_name"><b>Fornavn:</b></label>
+        <input type="text" placeholder="Indtast fornavn" name="first_name" required><br>
+        <label for="last_name"><b>Efternavn:</b></label>
+        <input type="text" placeholder="Indtast efternavn" name="last_name" required><br>
+        <label for="rfid"><b>Ledigt kort id:</b></label><br>
+        <input type="number" name="card_id" required><br>
+        <br>
+        <button type="submit" value="Submit" class="login-btn" onclick="login()"><i class="fas fa-user-plus"></i>&nbsp&nbspTilføj</button><br>
+      </form>
+      <a href="{{ url_for('admin_index') }}"><button class="btn"><i class="fa fa-home"></i>&nbsp&nbspTilbage til startside</button></a>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+
+

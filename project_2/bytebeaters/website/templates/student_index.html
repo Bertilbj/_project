@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studerende side efter login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+
+<body>
+  {% include "side_bar_student.html" %}
+  <div class="header">
+    <div class="container">
+      <img src="{{ url_for('static', filename='student_photo.jpg') }}" />
+      <h1>Velkommen {{ first_name }}!</h1>
+      <p>Du er logget ind som {{user_type}}</p>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+  {% include "side_bar.html" %}
+  <div class="header">
+    <div class="container">
+      <h1>Log data</h1>
+      <div class="column-table">
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th>log ID</th>
+              <th>id</th>
+              <th>Lokation</th>
+              <th>Hvem</th>
+              <th>Succes</th>
+              <th>Dato</th>
+              <th>Tidspunkt</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in logs %}
+            <tr class="active-row">
+              <td>{{ row[0] }}</td>
+              <td>{{ row[1] }}</td>
+              <td>{{ row[2] }}</td>
+              <td>{{ row[3] }}</td>
+              <td>{{ row[4] }}</td>
+              <td>{{ row[5] }}</td>
+              <td>{{ row[6] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</body>
+
+</html>

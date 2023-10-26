@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+} /* opsætning af udseendet */
+
+.header {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+} /* opsæt baggrundsfarve */
+
+.side-nav {
+  width: 220px;
+  height: 100%;
+  background: #32373c;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px 30px;
+} /* Opsæt udseendet af side baren */
+
+.logo {
+  display: block;
+  margin-bottom: 100px;
+}
+
+.nav-links {
+  list-style: none;
+  position: absolute;
+} /* Opsætning af nav-link klassen <ul> */
+
+.nav-links li {
+  padding: 10px 0;
+} /* Opsætning af skift str. i listen under nav-link klassen */
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+} /* opsætning af farve og skrift under nav-links listen under ting inde i <a> */
+
+.nav-links li a i {
+  font-size: 15px;
+  margin-right: 8px;
+} /* opsætning af skrift str. og hvor mange px skriften til starte inde fra højre side */ 
+
+.nav-links li:hover a {
+  color: #000000;
+  transition: 0.3s;
+} /* Opsætning af hvad der sker når man holder musen over teksten uden at trykke */
+
+.nav-links li:hover~.active {
+  display: block;
+} 
+
+.container { 
+  width: 1000px;
+  padding: 180px;
+  background-color: #ffffff;
+  margin: 0 auto;
+  margin-top: 4%;
+  margin-left: 23.5%;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+  animation: fade-in 0.6s ease-out;
+} /* Opsætning af den hivde box, hvor teskten står inde i */
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} /* opsætter en keyframe der gradvist øger gennemsigtigheden */
+
+input[type=text],
+input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+} /* opsætning af, hvor udseendet på input linjerne skal se ud */
+
+input[type=text]:focus,
+input[type=password]:focus {
+  border-color: #4CAF50;
+} /* udseendet på input linjerne når de er i fokus */
+
+.login-btn {
+  background-color: #0b4b13;
+  color: white;
+  padding: 8px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+} /* Opsætning af, hvordan knappen ser ud der er under tingene på websiten */
+
+.login-btn:hover {
+  background-color: #45a049;
+} /* Hvilken farve knappen til have når man holder musen over den */
+
+.logout-btn {
+  background-color: #6e1a1a;
+  color: white;
+  padding: 8px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+} /* Opsætning af, hvordan log ud knappen skal se ud */
+
+.logout-btn:hover {
+  background-color: #ac2f2f;
+} /* Hvilken farve log ud knappen til have når man holder musen over den */
+
+@keyframes shake {
+  0% {
+    transform: translateX(-10px);
+  }
+
+  25% {
+    transform: translateX(10px);
+  }
+
+  50% {
+    transform: translateX(-10px);
+  }
+
+  75% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+} /* Opsætning af rystende eller vibrerende animationseffekt  */
+
+.column-table {
+  display: flex;
+  justify-content: center;
+} /* Opsæt kolonnerne i tablen fleksible og i midten */
+
+.content-table {
+  border-collapse: separate;
+  border-spacing: 0px;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 800px;
+} /* Opsætning udseendet for tablen */
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+  border: 1px solid #dddddd;
+} /* Opsæt udseendet for tabelhoved og tabelceller */
+
+.content-table tbody tr:last-of-type td {
+  border-bottom: 1px solid #32373c;
+} /* Opsæt at tablen ikke skal have nogle bund linje */
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 1px solid #32373c;
+} /* Opsætter at den sidste linje for en tynd grå streng */
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+} /* Opsætter en baggrunds farve for hver anden række */
+
+.flash-messages {
+  margin-bottom: 10px;
+} /* Opsætning af skrift str. på pop up beskeden */
+
+.flash-message {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #f0f0f0;
+  color: #333333;
+} /* Opsætning af udseendet for pop up beskeden */
+
+.flash-message.success {
+  background-color: #3cb371;
+  color: #000000;
+} /* Opsætning af farve, hvis pop up beskeden viser det er gået godt */
+
+.flash-message.error {
+  background-color: #ff0000;
+  color: #000000;
+} /* Opsætning af farve, hvis pop up beskeden viser det er gået dårligt */
